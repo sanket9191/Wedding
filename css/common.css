@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Yatra+One&family=Noto+Naskh+Arabic&display=swap");
+
 html {
     scroll-behavior: smooth !important;
     width: 100vw !important;
@@ -117,4 +119,54 @@ html[data-bs-theme="light"] .bg-overlay-auto {
 
 .gif-image {
     max-height: 10rem;
+}
+
+/* Maharashtrian wedding theme accents */
+:root {
+    --mh-saffron: #ff6b00;
+    --mh-maroon: #8b1e3f;
+    --mh-cream: #fff8ec;
+    --mh-leaf: #3a7d44;
+}
+
+html[data-bs-theme="light"] body {
+    background-color: var(--mh-cream);
+}
+
+html[data-bs-theme="light"] .bg-theme-auto {
+    background: radial-gradient(circle at top, #ffe2b2 0, var(--mh-cream) 60%);
+}
+
+html[data-bs-theme="dark"] .bg-theme-auto {
+    background: radial-gradient(circle at top, #3a1e08 0, #120a03 60%);
+}
+
+html[data-bs-theme="light"] .btn-primary {
+    --bs-btn-bg: var(--mh-saffron);
+    --bs-btn-border-color: var(--mh-saffron);
+    --bs-btn-hover-bg: #e35f00;
+    --bs-btn-hover-border-color: #e35f00;
+}
+
+html[data-bs-theme="dark"] .btn-primary {
+    --bs-btn-bg: var(--mh-maroon);
+    --bs-btn-border-color: var(--mh-maroon);
+    --bs-btn-hover-bg: #6b162f;
+    --bs-btn-hover-border-color: #6b162f;
+}
+
+html[data-bs-theme="light"] .navbar {
+    background-color: rgba(255, 248, 236, 0.9) !important;
+}
+
+html[data-bs-theme="dark"] .navbar {
+    background-color: rgba(18, 10, 3, 0.9) !important;
+}
+
+html[data-bs-theme="light"] .text-theme-auto-accent {
+    color: var(--mh-maroon);
+}
+
+html[data-bs-theme="dark"] .text-theme-auto-accent {
+    color: #ffd7a1;
 }
