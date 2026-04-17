@@ -113,3 +113,12 @@ svg {
 .no-gap-bottom {
     margin-bottom: -0.75rem !important;
 }
+
+@keyframes kenBurns {
+    0%   { transform: scale(1);    }
+    100% { transform: scale(1.08); }
+}
+.slide-desktop-active .bg-cover-home {
+    animation: kenBurns 6s ease-in-out forwards;
+}
+
