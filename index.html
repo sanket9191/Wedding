@@ -166,7 +166,7 @@
                             <a href="https://maps.app.goo.gl/26J1FuNpohF2eakn8?g_st=aw" target="_blank"
                                 class="btn btn-outline-auto btn-sm rounded-pill shadow mb-2 px-3"><i
                                     class="fa-solid fa-map-location-dot me-2"></i>View Venue Location</a>
-                            
+
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center mt-4 mb-2">
@@ -355,10 +355,9 @@
                                         <div class="col mt-1 mb-3 ps-0">
                                             <p class="fw-bold mb-2">🌟 First Meeting</p>
                                             <p class="small mb-0">
-                                                In January 2025, Rohit, a talented software engineer with deep roots in
-                                                Maharashtrian traditions, met Anisha, an accomplished marketing
-                                                professional known for her grace and values, at a professional
-                                                conference in Pune.
+                                                In January 2023, Rohit, a talented NCB officer with deep roots in
+                                                Maharashtrian traditions, met Anisha, an accomplished
+                                                professional known for her grace and values.
                                             </p>
                                         </div>
                                     </div>
@@ -686,8 +685,8 @@
                                     data-offline-disabled="false">
                                     <option value="0" selected>Please confirm</option>
                                     <option value="1">&#9989; Joyfully Attending</option>
-                                    <option value="1">&#10010; Will try my best to attend</option>
-                                    <option value="2">&#10060; Unable to attend, but sending my blessings</option>
+                                    <option value="2">&#10010; Will try my best to attend</option>
+                                    <option value="3">&#10060; Unable to attend, but sending my blessings</option>
                                 </select>
                             </div>
 
@@ -917,8 +916,9 @@
             const message = messageEl ? messageEl.value.trim() : '';
 
             let presenceText = '';
-            if (presence === '1') presenceText = 'Will attend ✅';
-            else if (presence === '2') presenceText = 'Unable to attend ❌';
+            if (presence === '1') presenceText = 'Joyfully attending ✅';
+            else if (presence === '2') presenceText = 'Will try my best to attend ➕';
+            else if (presence === '3') presenceText = 'Unable to attend ❌';
 
             const lines = [
                 'Namaste, my wishes for Rohit & Anisha:',
