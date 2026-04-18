@@ -330,9 +330,10 @@ export const guest = (() => {
 
         // In local development (localhost/127.0.0.1) we force offline mode
         // by ignoring any data-key attribute so there is no API dependency.
-        const rawToken = document.body.getAttribute('data-key');
-        const isLocalHost = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
-        const token = isLocalHost ? '' : rawToken;
+        // const rawToken = document.body.getAttribute('data-key');
+        // const isLocalHost = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+        // const token = isLocalHost ? '' : rawToken;
+        const token = '';
 
         const params = new URLSearchParams(window.location.search);
 
