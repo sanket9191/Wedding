@@ -50,15 +50,6 @@
     animation: love 5s ease-in-out infinite;
 }
 
-.slide-desktop {
-    transform: scale(1);
-    transition: transform 10s linear;
-}
-
-.slide-desktop-active {
-    transform: scale(1.15);
-}
-
 @keyframes petalFall {
     0%   { transform: translateY(-10px) rotate(0deg);   opacity: 1; }
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }

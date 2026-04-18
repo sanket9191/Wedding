@@ -259,7 +259,7 @@ export const guest = (() => {
             dates: `${formatDate('2026-05-03 18:40')}/${formatDate('2026-05-03 19:40')}`,
             details: 'Vivah Samaaroh - Celebrating the sacred union of Rohit and Anisha. Join us for the Mandap Ceremony and Reception Dinner at Ganeshlila Mangal Karyalay, Akumbhe, Solapur.',
             location: 'Ganeshlila Mangal Karyalay, Akumbhe, Madha District - Solapur',
-            ctz: config.get('tz'),
+            ctz: 'Asia/Kolkata',
         });
 
         url.search = data.toString();

@@ -36,8 +36,8 @@
     <meta name="color-scheme" content="dark light">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="canonical" href="https://ulems.my.id/">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://ulems.my.id/assets/images/icon.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="https://ulems.my.id/assets/images/icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/icon.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./assets/images/icon.png">
 
     <!-- Preconnect CDN -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
@@ -75,19 +75,6 @@
     <script src="./dist/guest.js"></script>
 </head>
 
-<script>
-  // Generate 12 petals at random positions
-  for (let i = 0; i < 12; i++) {
-    const p = document.createElement('div');
-    p.className = 'petal';
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = (4 + Math.random() * 6) + 's';
-    p.style.animationDelay = (Math.random() * 5) + 's';
-    p.style.width = p.style.height = (8 + Math.random() * 10) + 'px';
-    document.body.appendChild(p);
-  }
-</script>
-
 <body data-key="d9faced3377732b0edf19e90d1bde0cd5de04801c75eb41743" data-url="https://api.ulems.my.id/"
     data-audio="./assets/music/music_wedding.mp3" data-confetti="true" data-time="2026-05-03 18:40:00">
 
@@ -109,14 +96,14 @@
 
                         <!-- Slide 2 — Bride solo -->
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/Couple_1.JPG" alt="bride"
-                                class="bg-cover-home" style="opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/Couple_1.JPG"
+                                alt="bride" class="bg-cover-home" style="opacity: 30%;">
                         </div>
 
                         <!-- Slide 3 — Groom solo -->
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/Couple_4.JPG" alt="groom"
-                                class="bg-cover-home" style="opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/Couple_4.JPG"
+                                alt="groom" class="bg-cover-home" style="opacity: 30%;">
                         </div>
 
                         <!-- Slide 4 — Gallery photo -->
@@ -153,7 +140,7 @@
                 <!-- Home -->
                 <section id="home" class="bg-light-dark position-relative overflow-hidden p-0 m-0">
                     <img src="./assets/images/placeholder.webp" data-src="./assets/images/COUPLE_1.JPG" alt="bg"
-                        class="position-absolute opacity-25 top-50 start-50 translate-middle bg-cover-home">
+                        class="position-absolute opacity-50 top-25 start-25 translate-middle bg-cover-home">
 
                     <div class="position-relative text-center bg-overlay-auto" style="background-color: unset;">
                         <h1 class="font-esthetic pt-5 pb-4 fw-medium text-theme-auto-accent"
@@ -481,6 +468,33 @@
                     </div>
                 </section>
 
+                <!-- Location Map -->
+                <section class="bg-light-dark pb-4 pt-3" id="location">
+                    <div class="container text-center">
+                        <h2 class="font-esthetic py-2 m-0" style="font-size: 2.25rem;">
+                            स्थळ दर्शन - Venue Map
+                        </h2>
+                        <p class="mb-3" style="font-size: 0.9rem;">
+                            Here is the exact location of Ganeshlila Mangal Karyalay.
+                        </p>
+
+                        <!-- Responsive 16:9 map preview -->
+                        <div class="ratio ratio-16x9 rounded-4 shadow mb-3 overflow-hidden">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6482.393073955727!2d75.2964051240439!3d17.992024496054473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc4695db86ca817%3A0xb9de69b00999515f!2sShree%20Ganeshleela%20Garden%20%26%20Mangal%20Karyalay!5e0!3m2!1sen!2sin!4v1776484721649!5m2!1sen!2sin"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                        <a href="https://maps.app.goo.gl/26J1FuNpohF2eakn8?g_st=aw" target="_blank"
+                            class="btn btn-outline-auto btn-sm rounded-pill shadow px-3">
+                            <i class="fa-solid fa-map-location-dot me-2"></i>
+                            Open in Google Maps
+                        </a>
+                    </div>
+                </section>
+
                 <!-- Gallery (images still placeholder, to be replaced with your own assets) -->
                 <section class="bg-white-black pb-5 pt-3" id="gallery">
                     <div class="container">
@@ -506,8 +520,9 @@
                                             onclick="undangan.guest.modal(this)">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/Couple_4.JPG"
-                                            alt="gallery 2" class="d-block img-fluid cursor-pointer"
+                                        <img src="./assets/images/placeholder.webp"
+                                            data-src="./assets/images/Couple_4.JPG" alt="gallery 2"
+                                            class="d-block img-fluid cursor-pointer"
                                             onclick="undangan.guest.modal(this)">
                                     </div>
                                     <div class="carousel-item">
@@ -549,8 +564,9 @@
                                             onclick="undangan.guest.modal(this)">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/Couple_5.JPG"
-                                            alt="gallery 5" class="d-block img-fluid cursor-pointer"
+                                        <img src="./assets/images/placeholder.webp"
+                                            data-src="./assets/images/Couple_5.JPG" alt="gallery 5"
+                                            class="d-block img-fluid cursor-pointer"
                                             onclick="undangan.guest.modal(this)">
                                     </div>
                                     <div class="carousel-item">
@@ -632,11 +648,11 @@
                                 <p class="m-0 p-0" style="font-size: 0.95rem;"><i
                                         class="fa-brands fa-whatsapp me-1"></i>Phone/WhatsApp</p>
                                 <button class="btn btn-outline-auto btn-sm shadow-sm rounded-4 py-0"
-                                    style="font-size: 0.75rem;" data-copy="+91 8862077553"
+                                    style="font-size: 0.75rem;" data-copy="+91 7796375230"
                                     onclick="undangan.util.copy(this)"><i class="fa-solid fa-copy"></i></button>
                             </div>
                             <small class="d-block my-1" style="font-size: 0.85rem;"><strong>+91
-                                    8862077553</strong></small>
+                                    7796375230</strong></small>
                         </div>
                     </div>
                 </section>
@@ -686,18 +702,18 @@
                             <div class="d-none mb-3" id="gif-form-default"></div>
 
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-sm rounded-4 shadow m-1"
-                                    onclick="undangan.comment.send(this)" data-offline-disabled="false">
-                                    <i class="fa-solid fa-paper-plane me-2"></i>Send
+                                <button class="btn btn-success btn-sm rounded-4 shadow m-1"
+                                    onclick="sendWishToWhatsApp()">
+                                    <i class="fa-brands fa-whatsapp me-2"></i>Send on WhatsApp
                                 </button>
                             </div>
                         </div>
 
                         <!-- Comments -->
-                        <div class="py-3" id="comments" data-loading="false"></div>
+                        <!-- <div class="py-3" id="comments" data-loading="false"></div> -->
 
                         <!-- Pagination -->
-                        <nav class="d-flex d-none justify-content-center mt-1 mb-0" id="pagination"></nav>
+                        <!-- <nav class="d-flex d-none justify-content-center mt-1 mb-0" id="pagination"></nav> -->
                     </div>
                 </section>
 
@@ -756,6 +772,12 @@
                         <a class="nav-link" href="#wedding-date">
                             <i class="fa-solid fa-calendar-check"></i>
                             <span class="d-block" style="font-size: 0.7rem;">Date</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span class="d-block" style="font-size: 0.7rem;">Location</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -867,6 +889,49 @@
             </div>
         </div>
     </div>
+    <!-- <script>
+        // Generate 12 petals at random positions
+        for (let i = 0; i < 12; i++) {
+            const p = document.createElement('div');
+            p.className = 'petal';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = (4 + Math.random() * 6) + 's';
+            p.style.animationDelay = (Math.random() * 5) + 's';
+            p.style.width = p.style.height = (8 + Math.random() * 10) + 'px';
+            document.body.appendChild(p);
+        }
+    </script> -->
+    <script>
+        function sendWishToWhatsApp() {
+            const nameEl = document.getElementById('form-name');
+            const presenceEl = document.getElementById('form-presence');
+            const messageEl = document.getElementById('form-comment');
+
+            const name = nameEl ? nameEl.value.trim() : '';
+            const presence = presenceEl ? presenceEl.value : '0';
+            const message = messageEl ? messageEl.value.trim() : '';
+
+            let presenceText = '';
+            if (presence === '1') presenceText = 'Will attend ✅';
+            else if (presence === '2') presenceText = 'Unable to attend ❌';
+
+            const lines = [
+                'Namaste, this is my wish for Rohit & Anisha:',
+                name ? `Name: ${name}` : '',
+                presenceText,
+                '',
+                message
+            ].filter(Boolean);
+
+            const text = encodeURIComponent(lines.join('\n'));
+
+            // Change this to your number: country code + number, no +
+            const phone = '917588339191'; // example: +91 8862077553 → 918862077553
+
+            const url = `https://wa.me/${phone}?text=${text}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 
 </html>
