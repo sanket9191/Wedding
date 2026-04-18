@@ -199,6 +199,19 @@ export const comment = (() => {
             like.removeListener(u);
         });
 
+        // If there is no comments container (e.g., offline/local build without API),
+        // just short-circuit and resolve with an empty structure so callers don't break.
+        if (!comments) {
+            return Promise.resolve({
+                code: 200,
+                data: {
+                    lists: [],
+                    count: 0,
+                },
+                error: null,
+            });
+        }
+
         if (comments.getAttribute('data-loading') === 'false') {
             comments.setAttribute('data-loading', 'true');
             comments.innerHTML = card.renderLoading().repeat(pagination.getPer());
@@ -533,22 +546,26 @@ export const comment = (() => {
         if (!id) {
             if (pagination.reset()) {
                 await show();
-                comments.scrollIntoView();
+                if (comments) {
+                    comments.scrollIntoView();
+                }
                 return;
             }
 
             pagination.setTotal(pagination.geTotal() + 1);
-            if (comments.children.length === pagination.getPer()) {
+            if (comments && comments.children.length === pagination.getPer()) {
                 comments.lastElementChild.remove();
             }
 
             response.data.is_parent = true;
             response.data.is_admin = session.isAdmin();
-            comments.insertAdjacentHTML('afterbegin', await card.renderContentMany([response.data]));
-            comments.scrollIntoView();
+            if (comments) {
+                comments.insertAdjacentHTML('afterbegin', await card.renderContentMany([response.data]));
+                comments.scrollIntoView();
+            }
         }
 
-        if (id) {
+        if (id && comments) {
             showHide.set('hidden', showHide.get('hidden').concat([dto.commentShowMore(response.data.uuid, true)]));
             showHide.set('show', showHide.get('show').concat([id]));
 
@@ -672,6 +689,13 @@ export const comment = (() => {
         pagination.init();
 
         comments = document.getElementById('comments');
+
+        // In local/offline builds where we removed the comments container from index.html,
+        // there is nothing to initialize. Just return early so the rest of the app can run.
+        if (!comments) {
+            return;
+        }
+
         comments.addEventListener('undangan.comment.show', show);
 
         owns = storage('owns');
