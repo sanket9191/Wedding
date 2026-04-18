@@ -291,27 +291,25 @@ export const guest = (() => {
      * @returns {Promise<void>}
      */
     const booting = async () => {
-        animateSvg();
-        countDownDate();
-        showGuestName();
-        modalImageClick();
-        normalizeArabicFont();
-        buildGoogleCalendar();
+    animateSvg();
+    countDownDate();
+    showGuestName();
+    modalImageClick();
+    normalizeArabicFont();
+    buildGoogleCalendar();
 
-        if (information.has('presence')) {
-            document.getElementById('form-presence').value = information.get('presence') ? '1' : '2';
-        }
+    const presenceEl = document.getElementById('form-presence');
+    if (presenceEl && information.has('presence')) {
+        presenceEl.value = information.get('presence') ? '1' : '2';
+    }
 
-        if (information.get('info')) {
-            document.getElementById('information')?.remove();
-        }
+    if (information.get('info')) {
+        document.getElementById('information')?.remove();
+    }
 
-        // wait until welcome screen is show.
-        await util.changeOpacity(document.getElementById('welcome'), true);
-
-        // remove loading screen and show welcome screen.
-        await util.changeOpacity(document.getElementById('loading'), false).then((el) => el.remove());
-    };
+    await util.changeOpacity(document.getElementById('welcome'), true);
+    await util.changeOpacity(document.getElementById('loading'), false).then((el) => el.remove());
+};
 
     /**
      * @returns {void}
