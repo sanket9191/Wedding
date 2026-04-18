@@ -10,7 +10,7 @@ export const audio = (() => {
    * @param {boolean} [playOnOpen=true]
    * @returns {Promise<void>}
    */
-  const load = async (playOnOpen = false) => {
+  const load = async (playOnOpen = true) => {
     const url = document.body.getAttribute("data-audio");
     if (!url) {
       progress.complete("audio", true);
