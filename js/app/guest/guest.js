@@ -90,7 +90,7 @@ export const guest = (() => {
     };
 
     /**
-     * @returns {Promise<void>}
+     * @returns {void}
      */
     const slide = async () => {
         const interval = 6000;
@@ -329,7 +329,13 @@ export const guest = (() => {
         const img = image.init();
         const aud = audio.init();
         const lib = loaderLibs();
-        const token = document.body.getAttribute('data-key');
+
+        // In local development (localhost/127.0.0.1) we force offline mode
+        // by ignoring any data-key attribute so there is no API dependency.
+        const rawToken = document.body.getAttribute('data-key');
+        const isLocalHost = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+        const token = isLocalHost ? '' : rawToken;
+
         const params = new URLSearchParams(window.location.search);
 
         window.addEventListener('resize', util.debounce(slide));
