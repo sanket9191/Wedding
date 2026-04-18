@@ -28,7 +28,7 @@ export const pool = (() => {
     return {
         /**
          * @param {string} name
-         * @returns {Cache}
+         * @returns {Cache|null}
          */
         getInstance: (name) => {
             if (!cachePool || !cachePool.has(name)) {
@@ -42,6 +42,14 @@ export const pool = (() => {
          * @returns {Promise<void>}
          */
         restart: async (name) => {
+            if (!window.isSecureContext || !('caches' in window)) {
+                // When caches are not available (e.g., file:// or non-secure dev),
+                // simply reset the in-memory map so the app can keep running.
+                cachePool.set(name, null);
+                cachePool.delete(name);
+                return;
+            }
+
             cachePool.set(name, null);
             cachePool.delete(name);
             await window.caches.delete(name);
@@ -53,12 +61,25 @@ export const pool = (() => {
          * @returns {void}
          */
         init: (callback, lists = []) => {
-            if (!window.isSecureContext) {
-                throw new Error('this application required secure context');
+            cachePool = new Map();
+
+            // In some local dev setups (file://, non-secure HTTP without localhost exception)
+            // window.isSecureContext or window.caches may not be available.
+            // In that case, skip cache initialization but still call the callback
+            // so the UI can boot normally without hard dependency on the Cache API.
+            if (!window.isSecureContext || !('caches' in window)) {
+                console.warn('Cache API not available or insecure context; running without request caching.');
+                callback();
+                return;
             }
 
-            cachePool = new Map();
-            Promise.all(lists.concat([cacheRequest]).map((v) => window.caches.open(v).then((c) => cachePool.set(v, c)))).then(() => callback());
+            Promise
+                .all(
+                    lists
+                        .concat([cacheRequest])
+                        .map((v) => window.caches.open(v).then((c) => cachePool.set(v, c))),
+                )
+                .then(() => callback());
         },
     };
 })();
